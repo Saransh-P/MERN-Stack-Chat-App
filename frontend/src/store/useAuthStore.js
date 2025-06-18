@@ -122,5 +122,3 @@ export const useAuthStore = create((set, get) => ({
 
 }));
 
-
-//https://github.com/burakorkmez/fullstack-chat-app/blob/master/frontend/src/components/AuthImagePattern.jsx
