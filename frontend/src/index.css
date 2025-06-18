@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@plugin "daisyui";
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#11998E] to-[#38EF7D];
+  }
+
+  .text-right-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#EA8D8D] to-[#A890FE];
+  }
+
+  .link-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#EA8D8D] to-[#A890FE] hover:opacity-80 transition-opacity ;
+  }
+
+
+  .btn-gradient {
+    @apply bg-gradient-to-r from-[#11998E] to-[#38EF7D] text-white rounded-lg hover:opacity-90 transition-opacity;
+  }
+
+  .btn-nav-gradient {
+    @apply bg-gradient-to-r from-[#EA8D8D] to-[#A890FE] text-white rounded-lg hover:opacity-90 transition-opacity;
+  }
+}
