@@ -28,7 +28,9 @@ app.use(cookieParser()); // middleware to parse cookies
 
 // middleware to handle cors
 app.use(cors({ 
-    origin: "http://localhost:5173", // allow requests from this origin
+    origin: process.env.NODE_ENV === "production" 
+        ? "https://mern-stack-chat-app-sbh6.onrender.com"
+        : "http://localhost:5173",
     credentials: true,
 }));
 
@@ -38,11 +40,10 @@ app.use("/api/messages", messageRoutes); // use message routes
 
 // serve frontend
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "/frontend/dist")));
+    app.use(express.static(path.join(__dirname, "frontend/dist")));
 
-    // for any other route, send the index.html file
-    app.get(/(.*)/, (req, res) => {
-        res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
     });
 }
 
