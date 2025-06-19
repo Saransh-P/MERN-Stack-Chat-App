@@ -77,14 +77,27 @@ const MessageInput = () => {
             {/* form for sending the message */}
             <form onSubmit={handleSendMessage} className="flex items-center gap-2">
                 <div className="flex-1 flex gap-2">
-                    {/* this is the text input */}
-                    <input
-                        type="text"
-                        className="w-full input input-bordered rounded-lg input-sm sm:input-md"
-                        placeholder="Type a message..."
-                        value={text}
-                        onChange={(e) => setText(e.target.value)}
-                    />
+                    
+                    <div className="w-full relative">
+                        {/* this is the text input */}
+                        <input
+                            type="text"
+                            className="w-full input input-bordered rounded-lg input-sm sm:input-md pr-12"
+                            placeholder="Type a message..."
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                        />
+                        
+                        {/* this is the button for selecting the image - shown button */}
+                        <button
+                            type="button"
+                            className={`absolute right-2 top-1/2 -translate-y-1/2 btn btn-ghost btn-circle btn-sm
+                                    ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
+                            onClick={() => fileInputRef.current?.click()}
+                        >
+                            <Image size={18} />
+                        </button>
+                    </div>
 
                     {/* this is the image input - hidden (will work the same when the user clicks on the image button)*/}
                     <input
@@ -94,16 +107,6 @@ const MessageInput = () => {
                         ref={fileInputRef}
                         onChange={handleImageChange}
                     />
-
-                    {/* this is the button for selecting the image - shown button */}
-                    <button
-                        type="button"
-                        className={`hidden sm:flex btn btn-circle 
-                                ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
-                        onClick={() => fileInputRef.current?.click()}
-                    >
-                        <Image size={20} />
-                    </button>
 
                 </div>
 
